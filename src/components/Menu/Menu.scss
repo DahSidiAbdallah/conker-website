@@ -2,15 +2,21 @@
 .menu {
   display: flex;
   justify-content: center;
-  gap: clamp(0.6em, 3vw, 2em);
+  gap: 0.6em;
   max-width: 860px;
   margin: 3.5em auto 0;
   position: relative;
   z-index: 2;
+
+  // room for the joystick knob between options (it's hidden on phones)
+  @media (min-width: 641px) {
+    gap: 4.6em;
+  }
 }
 
 // shared by MenuItem + GitHub: a chapter label over a QUIT/CONT... style pill
 .pause-option {
+  position: relative;
   flex: 0 1 12em;
   min-width: 0;
   appearance: none;

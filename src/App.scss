@@ -15,26 +15,22 @@
 
 :root {
   // Conker himself
-  --fur: #e8641c;
   --fur-dark: #a8360c;
-  // the hive
-  --honey: #ffc21a;
-  --honey-light: #ffe27a;
-  --honey-dark: #d98a00;
+  // the hive, sampled from the honeycomb texture (0000C38E.bin.png)
+  --hive-lemon: #fefa08;
+  --hive-amber: #fec008;
+  --hive-gold: #e1a508;
+  --hive-bronze: #ba8308;
+  --hive-dark: #795408;
   // health
   --choc: #883d1d;
   --choc-light: #c8781e;
   --choc-dark: #562404;
-  // cash
-  --cash: #3f8f3a;
-  --cash-light: #8fd07a;
   // N64 B button
   --b-green: #1f9e4a;
 
   --ink: #2b1606;
-  --cream: #fff4d6;
   --paper: #fffaf0;
-  --splat: #c4141c;
 
   // Lithos is the typeface of the game's logo and menus; the comic lettering
   // is kept for speech bubbles, as in-game
@@ -77,7 +73,7 @@
   font-family: var(--font-logo);
 
   // honeycomb background, straight out of the hive
-  background-color: var(--honey);
+  background-color: var(--hive-amber);
   background-image: url('assets/images/0000C38E.bin.png');
   background-size: 128px 64px;
   background-repeat: repeat;

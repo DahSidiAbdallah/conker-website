@@ -85,10 +85,11 @@ export const HistoricProgressPlot = ({
           name: 'bytes',
           mode: 'lines',
           fill: 'tozeroy',
-          fillcolor: 'rgba(255, 194, 26, 0.55)',
+          // colours from the hive texture
+          fillcolor: 'rgba(254, 192, 8, 0.55)',
           hovertemplate: '%{text}<extra>bytes</extra>',
           line: {
-            color: '#2b1606',
+            color: '#5b3b08',
             width: 3,
             shape: 'hv',
           },

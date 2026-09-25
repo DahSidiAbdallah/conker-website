@@ -45,3 +45,9 @@ $digits: (
     background-image: linear-gradient(180deg, nth($c, 1) 0%, nth($c, 2) 50%, nth($c, 3) 100%);
   }
 }
+
+// the $ texture is drawn bigger than the digits
+.digit-dollar {
+  font-size: 1.25em;
+  margin-right: 0.04em;
+}
