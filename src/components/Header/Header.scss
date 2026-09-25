@@ -1,74 +1,102 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   margin: 0 auto 1.25em;
   max-width: 860px;
 }
 
-// logo lettering in the style of the in-game PAUSED title:
-// glossy gradient faces with a bevelled gold rim
+// the box-art logo, remastered: stacked BAD / FUR / DAY. in Lithos with a bronze
+// extrusion, glossy molten-orange faces and a light sweep; "Conker's" in red brush script
 .logo {
+  position: relative;
   margin: 0;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  font-family: var(--font-logo);
   font-weight: normal;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-}
-
-.logo-letter {
-  display: inline-block;
-  padding: 0.06em 0.01em 0;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: logo-bounce 2.8s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.12s);
-  transform: rotate(calc((var(--i) - 4) * 0.8deg));
-}
-
-.logo-space {
-  display: inline-block;
-  width: 0.3em;
-}
-
-.logo-conkers {
-  font-size: clamp(2.2rem, 7vw, 3.6rem);
-  filter: var(--gold-rim);
-  transform: rotate(-4deg) translateX(-18%);
-  margin-bottom: 0.05em;
-
-  .logo-letter {
-    background-image: linear-gradient(180deg, #ffc27a 0%, #f07a26 44%, #b63e0c 56%, #e8641c 100%);
-  }
 }
 
 .logo-bfd {
-  font-size: clamp(3rem, 12vw, 6.2rem);
-  filter: var(--gold-rim);
-  white-space: nowrap;
+  display: block;
+  text-align: left;
+  font-family: var(--font-logo);
+  font-size: clamp(3.8rem, 14vw, 6.5rem);
+  filter:
+    drop-shadow(0 0 1px #2a1000)
+    drop-shadow(0 0 16px rgba(255, 200, 90, 0.45))
+    drop-shadow(5px 12px 10px rgba(0, 0, 0, 0.5));
+}
 
-  .logo-letter {
-    background-image: var(--dark-face);
+.logo-row {
+  display: block;
+  white-space: nowrap;
+  line-height: 0.82;
+}
+
+// each letter is a solid, extruded copy (textShadow set inline) with the
+// gradient face drawn over it
+.logo-letter {
+  position: relative;
+  display: inline-block;
+  color: #6d3207;
+  transform: translateY(var(--dy)) rotate(var(--r));
+
+  &::after {
+    content: attr(data-letter);
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    text-shadow: none;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image:
+      linear-gradient(115deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.75) 50%, rgba(255, 255, 255, 0) 60%),
+      linear-gradient(180deg, #fff1b8 0%, #ffc34a 30%, #f58a17 48%, #b94a06 52%, #f0801a 78%, #ffb347 100%);
+    background-size: 300% 100%, 100% 100%;
+    -webkit-text-stroke: 1.5px #fff0b0;
+    animation: logo-shine 4.5s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.06s);
   }
+}
+
+.logo-conkers {
+  position: absolute;
+  z-index: 2;
+  top: -0.3em;
+  left: -0.1em;
+  font-family: 'Caveat Brush', var(--font-comic);
+  font-size: clamp(2.3rem, 8.5vw, 4.2rem);
+  line-height: 1;
+  white-space: nowrap;
+  transform: rotate(-9deg);
+  color: transparent;
+  background-image: linear-gradient(180deg, #ff6a5a 0%, #e0141e 50%, #8e070d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter:
+    drop-shadow(1.5px 0 0 #3a0203)
+    drop-shadow(-1.5px 0 0 #3a0203)
+    drop-shadow(0 1.5px 0 #3a0203)
+    drop-shadow(0 -1.5px 0 #3a0203)
+    drop-shadow(3px 5px 4px rgba(0, 0, 0, 0.45));
 }
 
 // like the stone chapter name under PAUSED, tilted back into the screen
 .logo-stamp {
-  margin-top: 0.1em;
+  margin-top: 0.35em;
   font-family: var(--font-logo);
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
-  letter-spacing: 0.3em;
-  padding-left: 0.3em;
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
   text-transform: uppercase;
   color: transparent;
   background-image: var(--silver-face);
   -webkit-background-clip: text;
   background-clip: text;
   filter: var(--dark-rim);
-  transform: perspective(300px) rotateX(28deg) scaleX(1.25);
-  animation: stamp-in 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.3s both;
+  transform: perspective(300px) rotateX(24deg) scaleX(1.2);
 }
 
 .header-tagline {
@@ -78,12 +106,7 @@
   padding: 1.1em 3em;
 }
 
-@keyframes logo-bounce {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -0.06em; }
-}
-
-@keyframes stamp-in {
-  from { opacity: 0; transform: perspective(300px) rotateX(80deg) scaleX(1.25); }
-  to { opacity: 1; transform: perspective(300px) rotateX(28deg) scaleX(1.25); }
+@keyframes logo-shine {
+  0%, 55% { background-position: 150% 0, 0 0; }
+  100% { background-position: -150% 0, 0 0; }
 }

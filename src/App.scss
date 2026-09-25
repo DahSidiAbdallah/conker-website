@@ -22,9 +22,9 @@
   --honey-light: #ffe27a;
   --honey-dark: #d98a00;
   // health
-  --choc: #6b3514;
-  --choc-light: #955024;
-  --choc-dark: #3a1a08;
+  --choc: #883d1d;
+  --choc-light: #c8781e;
+  --choc-dark: #562404;
   // cash
   --cash: #3f8f3a;
   --cash-light: #8fd07a;
@@ -36,44 +36,38 @@
   --paper: #fffaf0;
   --splat: #c4141c;
 
+  // Lithos is the typeface of the game's logo and menus; the comic lettering
+  // is kept for speech bubbles, as in-game
   --font-comic: 'CCComicrazy', 'Comic Sans MS', cursive;
-  --font-logo: 'Luckiest Guy', 'CCComicrazy', cursive;
-  --font-num: 'Lithos Black Bold', 'Luckiest Guy', sans-serif;
+  --font-logo: 'Lithos Black Bold', 'Arial Black', sans-serif;
+  --font-num: var(--font-logo);
 
-  // N64 menu gold (the PAUSED rim, the lives counter)
-  --gold-face: linear-gradient(180deg, #fff6b8 0%, #f7cf45 42%, #c98a0c 56%, #f5d565 100%);
-  // glossy near-black lettering (PAUSED)
-  --dark-face: linear-gradient(180deg, #6b7290 0%, #2a2e44 44%, #07070d 54%, #2f3450 100%);
-  // stone/silver lettering (the chapter name under PAUSED)
-  --silver-face: linear-gradient(180deg, #ffffff 0%, #c9c9c9 45%, #8a8a8a 55%, #e0e0e0 100%);
+  // colours below are sampled from the game's own pause screen (emulator capture)
+
+  // gold numerals, like the lives counter
+  --gold-face: linear-gradient(180deg, #fbf7b0 0%, #f5f08f 20%, #e5cc4f 48%, #be9b37 58%, #e5cc4f 100%);
+  // dark purple lettering (PAUSED)
+  --dark-face: linear-gradient(180deg, #6e4f7f 0%, #4b3759 38%, #1d1921 52%, #2a2130 70%, #3f2e3f 100%);
+  // warm stone lettering (the chapter name under PAUSED)
+  --silver-face: linear-gradient(180deg, #eef3ea 0%, #c3d5c0 30%, #a7a19d 50%, #80807a 56%, #b7bab3 100%);
 
   // bevelled gold rim built from stacked drop-shadows (works on gradient text)
   --gold-rim:
-    drop-shadow(0 -2px 0 #fff3a6)
-    drop-shadow(2px 0 0 #e9b12a)
-    drop-shadow(-2px 0 0 #e9b12a)
-    drop-shadow(0 3px 0 #8c5606)
-    drop-shadow(0 0 1px #140c00)
+    drop-shadow(0 -2px 0 #f3f390)
+    drop-shadow(2px 0 0 #f3b542)
+    drop-shadow(-2px 0 0 #f3b542)
+    drop-shadow(0 3px 0 #9a6a1c)
+    drop-shadow(0 0 1px #130c1a)
     drop-shadow(3px 6px 6px rgba(0, 0, 0, 0.55));
   --dark-rim:
-    drop-shadow(1.5px 0 0 #140c00)
-    drop-shadow(-1.5px 0 0 #140c00)
-    drop-shadow(0 1.5px 0 #140c00)
-    drop-shadow(0 -1.5px 0 #140c00)
+    drop-shadow(1.5px 0 0 #17190e)
+    drop-shadow(-1.5px 0 0 #17190e)
+    drop-shadow(0 1.5px 0 #17190e)
+    drop-shadow(0 -1.5px 0 #17190e)
     drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.45));
 
   --soft-shadow: 0 10px 24px rgba(40, 15, 0, 0.45);
 }
-
-// gradient-filled text helper
-.face-gold, .face-dark, .face-silver {
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-.face-gold { background-image: var(--gold-face); }
-.face-dark { background-image: var(--dark-face); }
-.face-silver { background-image: var(--silver-face); }
 
 .app {
   min-height: 100%;
@@ -82,7 +76,7 @@
   padding: 1.5em 16px 2em;
   position: relative;
   color: var(--ink);
-  font-family: var(--font-comic);
+  font-family: var(--font-logo);
 
   // honeycomb background, straight out of the hive
   background-color: var(--honey);
@@ -130,8 +124,8 @@ div.plotly-notifier {
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.35;
-  color: #111;
-  background: radial-gradient(ellipse at 50% 45%, #fff 0%, #fff 58%, #e9e9e9 78%, #b9b9b9 100%);
+  color: #2d2d2d;
+  background: radial-gradient(ellipse at 50% 45%, #fbfbfb 0%, #fbfbfb 58%, #e1e1e1 80%, #c6c6c4 100%);
   border-radius: 50% / 50%;
   box-shadow:
     0 0 0 1.5px rgba(0, 0, 0, 0.75),
