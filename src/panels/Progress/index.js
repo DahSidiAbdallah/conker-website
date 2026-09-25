@@ -27,16 +27,20 @@ export const ProgressPanel = () => {
   }, [setLatestData])
 
   return (
-    <div className="panel">
-      <div className="panel-headline">
-        CBFD Decomp Current Progress:
-      </div>
-      <CurrentProgressPlot data={latestData} version={version} section={section} />
+    <>
+      <section className="panel">
+        <h2 className="panel-headline">
+          Current Progress
+        </h2>
+        <CurrentProgressPlot data={latestData} version={version} section={section} />
+      </section>
 
-      <div className="panel-headline">
-        Historic Progress:
-      </div>
-      <HistoricProgressPlot data={historicData} version={version} section={section} />
-    </div>
+      <section className="panel">
+        <h2 className="panel-headline">
+          The Story So Far
+        </h2>
+        <HistoricProgressPlot data={historicData} version={version} section={section} />
+      </section>
+    </>
   )
 }

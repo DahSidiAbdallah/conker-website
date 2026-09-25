@@ -1,14 +1,98 @@
+// the options float over the blurred world, like the pause menu
 .menu {
-  padding-top: 1em;
-  // font-family: 'Lithos Black Bold';
-  font-family: CCComicrazy;
-  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.6em, 3vw, 2em);
+  max-width: 860px;
+  margin: 3.5em auto 0;
+  position: relative;
+  z-index: 2;
 }
 
-.menu-items-left {
-  float: left;
+// shared by MenuItem + GitHub: a chapter label over a QUIT/CONT... style pill
+.pause-option {
+  flex: 0 1 12em;
+  min-width: 0;
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+
+    .pill {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px #173f0e;
+    }
+  }
 }
 
-.menu-items-right {
-  float: right;
+.pause-option-chapter {
+  font-family: var(--font-logo);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: transparent;
+  background-image: var(--silver-face);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: var(--dark-rim);
+}
+
+// green glass capsule with a thick dark rim and a pale inner ring
+.pill {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  padding: 0.35em 0.8em 0.25em;
+  border-radius: 999px;
+  border: 4px solid #0f2c09;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 18%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #8fcf5a 0%, #4f9a2f 50%, #2f6d1c 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(200, 255, 170, 0.55),
+    inset 0 -5px 8px rgba(0, 0, 0, 0.35),
+    0 6px 12px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-logo);
+  font-size: clamp(1.1rem, 3.6vw, 1.6rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #c9ff8f;
+  text-shadow:
+    -2px -2px 0 #0f2c09, 2px -2px 0 #0f2c09, -2px 2px 0 #0f2c09, 2px 2px 0 #0f2c09,
+    0 3px 0 #0f2c09;
+  filter: saturate(0.6) brightness(0.85);
+  transition: filter 0.15s, transform 0.2s cubic-bezier(0.2, 1.8, 0.4, 1);
+  white-space: nowrap;
+}
+
+.pause-option:hover .pill,
+.pause-option:focus-visible .pill {
+  filter: none;
+  transform: scale(1.06);
+}
+
+// the selected option pulses, like the highlighted choice in the pause menu
+.pause-option.active {
+  cursor: default;
+
+  .pill {
+    filter: none;
+    animation: pill-pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pill-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
 }

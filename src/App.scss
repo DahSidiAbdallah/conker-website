@@ -3,29 +3,138 @@
   font-family: 'CCComicrazy';
   src:  url('assets/fonts/cccrazycomic.woff2') format('woff2'),
         url('assets/fonts/cccrazycomic.woff') format('woff');
+  font-display: swap;
 }
 
 // via https://fontsgeek.com/fonts/Lithos-Bold
 @font-face {
   font-family: 'Lithos Black Bold';
   src:  url('assets/fonts/lithos_black_bold.otf') format('opentype');
+  font-display: swap;
 }
 
-.app {
-  height: 100%;
-  width: 100%;
-  min-height: 600px;
-  min-width: 600px;
+:root {
+  // Conker himself
+  --fur: #e8641c;
+  --fur-dark: #a8360c;
+  // the hive
+  --honey: #ffc21a;
+  --honey-light: #ffe27a;
+  --honey-dark: #d98a00;
+  // health
+  --choc: #6b3514;
+  --choc-light: #955024;
+  --choc-dark: #3a1a08;
+  // cash
+  --cash: #3f8f3a;
+  --cash-light: #8fd07a;
+  // N64 B button
+  --b-green: #1f9e4a;
 
-  // css hack
-  padding-top: 0.01em;
-  // honeycomb background
+  --ink: #2b1606;
+  --cream: #fff4d6;
+  --paper: #fffaf0;
+  --splat: #c4141c;
+
+  --font-comic: 'CCComicrazy', 'Comic Sans MS', cursive;
+  --font-logo: 'Luckiest Guy', 'CCComicrazy', cursive;
+  --font-num: 'Lithos Black Bold', 'Luckiest Guy', sans-serif;
+
+  // N64 menu gold (the PAUSED rim, the lives counter)
+  --gold-face: linear-gradient(180deg, #fff6b8 0%, #f7cf45 42%, #c98a0c 56%, #f5d565 100%);
+  // glossy near-black lettering (PAUSED)
+  --dark-face: linear-gradient(180deg, #6b7290 0%, #2a2e44 44%, #07070d 54%, #2f3450 100%);
+  // stone/silver lettering (the chapter name under PAUSED)
+  --silver-face: linear-gradient(180deg, #ffffff 0%, #c9c9c9 45%, #8a8a8a 55%, #e0e0e0 100%);
+
+  // bevelled gold rim built from stacked drop-shadows (works on gradient text)
+  --gold-rim:
+    drop-shadow(0 -2px 0 #fff3a6)
+    drop-shadow(2px 0 0 #e9b12a)
+    drop-shadow(-2px 0 0 #e9b12a)
+    drop-shadow(0 3px 0 #8c5606)
+    drop-shadow(0 0 1px #140c00)
+    drop-shadow(3px 6px 6px rgba(0, 0, 0, 0.55));
+  --dark-rim:
+    drop-shadow(1.5px 0 0 #140c00)
+    drop-shadow(-1.5px 0 0 #140c00)
+    drop-shadow(0 1.5px 0 #140c00)
+    drop-shadow(0 -1.5px 0 #140c00)
+    drop-shadow(2px 3px 3px rgba(0, 0, 0, 0.45));
+
+  --soft-shadow: 0 10px 24px rgba(40, 15, 0, 0.45);
+}
+
+// gradient-filled text helper
+.face-gold, .face-dark, .face-silver {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.face-gold { background-image: var(--gold-face); }
+.face-dark { background-image: var(--dark-face); }
+.face-silver { background-image: var(--silver-face); }
+
+.app {
+  min-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1.5em 16px 2em;
+  position: relative;
+  color: var(--ink);
+  font-family: var(--font-comic);
+
+  // honeycomb background, straight out of the hive
+  background-color: var(--honey);
   background-image: url('assets/images/0000C38E.bin.png');
   background-size: 128px 64px;
   background-repeat: repeat;
+
+  // warm vignette so the page content pops off the hive
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(255, 226, 122, 0.1) 30%, rgba(70, 30, 0, 0.6) 100%);
+  }
+
+  > * {
+    position: relative;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app,
+  .app * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+a {
+  color: var(--fur-dark);
 }
 
 /* plotly */
 div.plotly-notifier {
   visibility: hidden;
+}
+
+// the in-game speech bubble: white oval, soft grey shading toward a thin dark edge,
+// uppercase comic lettering
+.speech-bubble {
+  position: relative;
+  padding: 0.9em 1.6em;
+  font-family: var(--font-comic);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+  color: #111;
+  background: radial-gradient(ellipse at 50% 45%, #fff 0%, #fff 58%, #e9e9e9 78%, #b9b9b9 100%);
+  border-radius: 50% / 50%;
+  box-shadow:
+    0 0 0 1.5px rgba(0, 0, 0, 0.75),
+    0 0 6px 2px rgba(0, 0, 0, 0.35),
+    0 8px 16px rgba(40, 15, 0, 0.35);
 }

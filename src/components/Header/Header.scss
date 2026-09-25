@@ -1,0 +1,89 @@
+.header {
+  text-align: center;
+  margin: 0 auto 1.25em;
+  max-width: 860px;
+}
+
+// logo lettering in the style of the in-game PAUSED title:
+// glossy gradient faces with a bevelled gold rim
+.logo {
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-logo);
+  font-weight: normal;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.logo-letter {
+  display: inline-block;
+  padding: 0.06em 0.01em 0;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: logo-bounce 2.8s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.12s);
+  transform: rotate(calc((var(--i) - 4) * 0.8deg));
+}
+
+.logo-space {
+  display: inline-block;
+  width: 0.3em;
+}
+
+.logo-conkers {
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+  filter: var(--gold-rim);
+  transform: rotate(-4deg) translateX(-18%);
+  margin-bottom: 0.05em;
+
+  .logo-letter {
+    background-image: linear-gradient(180deg, #ffc27a 0%, #f07a26 44%, #b63e0c 56%, #e8641c 100%);
+  }
+}
+
+.logo-bfd {
+  font-size: clamp(3rem, 12vw, 6.2rem);
+  filter: var(--gold-rim);
+  white-space: nowrap;
+
+  .logo-letter {
+    background-image: var(--dark-face);
+  }
+}
+
+// like the stone chapter name under PAUSED, tilted back into the screen
+.logo-stamp {
+  margin-top: 0.1em;
+  font-family: var(--font-logo);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  letter-spacing: 0.3em;
+  padding-left: 0.3em;
+  text-transform: uppercase;
+  color: transparent;
+  background-image: var(--silver-face);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: var(--dark-rim);
+  transform: perspective(300px) rotateX(28deg) scaleX(1.25);
+  animation: stamp-in 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.3s both;
+}
+
+.header-tagline {
+  margin: 1.4em auto 0;
+  display: inline-block;
+  max-width: 26em;
+  padding: 1.1em 3em;
+}
+
+@keyframes logo-bounce {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -0.06em; }
+}
+
+@keyframes stamp-in {
+  from { opacity: 0; transform: perspective(300px) rotateX(80deg) scaleX(1.25); }
+  to { opacity: 1; transform: perspective(300px) rotateX(28deg) scaleX(1.25); }
+}

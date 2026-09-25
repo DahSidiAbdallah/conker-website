@@ -1,0 +1,77 @@
+.chocolate-meter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+}
+
+.chocolate-bar {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+}
+
+// each chunk is a bevelled block, like the chocolate on the pause screen
+.chocolate-chunk {
+  position: relative;
+  height: 38px;
+  border-radius: 6px;
+  // an empty slot: a dim recess where the chocolate was
+  background: rgba(60, 30, 10, 0.1);
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25), inset -1px -1px 0 rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: calc(var(--fill) * 100%);
+    border-radius: inherit;
+    background:
+      radial-gradient(ellipse 60% 40% at 35% 25%, rgba(255, 220, 180, 0.45), rgba(255, 220, 180, 0) 70%),
+      linear-gradient(145deg, #b36a36 0%, #7a3f18 45%, #4a220a 100%);
+    box-shadow:
+      inset 3px 3px 2px rgba(255, 210, 160, 0.35),
+      inset -3px -4px 3px rgba(0, 0, 0, 0.5);
+    transform-origin: left;
+    animation: chunk-fill 0.9s cubic-bezier(0.2, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes chunk-fill {
+  from { transform: scaleX(0); }
+}
+
+.hud-label {
+  font-family: var(--font-logo);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  margin-bottom: 0.5em;
+}
+
+// gold 3D numerals, like the lives counter
+.hud-number {
+  font-family: var(--font-logo);
+  font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+  line-height: 1;
+  padding-top: 0.1em;
+  white-space: nowrap;
+  color: transparent;
+  background-image: var(--gold-face);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: var(--dark-rim);
+
+  small {
+    font-size: 0.6em;
+    margin-left: 0.05em;
+  }
+}
+
+.hud-detail {
+  margin-top: 0.5em;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}

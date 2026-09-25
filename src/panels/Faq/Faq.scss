@@ -1,16 +1,70 @@
-.question {
-  font-family: 'CCComicrazy';
-  padding-top: 1.5em;
-  font-size: 1.2em;
-  color: #111;
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.answer {
-  font-family: 'CCComicrazy';
-  padding-top: 0.75em;
-  color: #111;
+// in-game speech bubbles (see .speech-bubble), with a tail
+.faq .question,
+.faq .answer {
+  max-width: 88%;
+  margin: 0;
+  border-radius: 42% / 50%;
+  padding: 1.3em 3.2em;
+
+  // the tail: a dark triangle with a white one inset over it
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(100% - 6px);
+    width: 26px;
+    height: 24px;
+  }
+
+  &::before {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  &::after {
+    background: #e6e6e6;
+    transform: scale(0.8) translateY(-4px);
+  }
+}
+
+.faq .question {
+  margin-top: 1.9em;
+  font-size: 1.1em;
+
+  &::before,
+  &::after {
+    left: 18%;
+    clip-path: polygon(0 0, 100% 0, 10% 100%);
+  }
+}
+
+// answers are written in normal case - they're long
+.faq .answer {
+  align-self: flex-end;
+  margin-top: 1.3em;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+
+  &::before,
+  &::after {
+    right: 18%;
+    clip-path: polygon(0 0, 100% 0, 90% 100%);
+  }
+}
+
+.faq .panel-headline + .question {
+  margin-top: 0.3em;
 }
 
 .answer a {
+  color: #8a2a06;
   text-decoration: underline;
+  text-decoration-thickness: 2px;
+  font-weight: bold;
 }
