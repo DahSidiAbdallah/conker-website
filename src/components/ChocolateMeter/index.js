@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {GameNumber} from '../GameNumber'
+
 import './ChocolateMeter.scss'
 
 // Conker's health bar is made of chocolate - so is ours
@@ -25,7 +27,8 @@ export const ChocolateMeter = ({percent, chunks = 10, label, detail}) => {
           })}
         </div>
         <div className="hud-number">
-          {percent.toFixed(2)}<small>%</small>
+          <GameNumber text={percent.toFixed(2)} />
+          <small><GameNumber text="%" /></small>
         </div>
       </div>
       {detail && <div className="hud-detail">{detail}</div>}

@@ -52,18 +52,12 @@
   margin-bottom: 0.5em;
 }
 
-// gold 3D numerals, like the lives counter
+// big HUD numbers, drawn with the game's multicoloured digits (see GameNumber)
 .hud-number {
   font-family: var(--font-logo);
   font-size: clamp(1.9rem, 5.5vw, 2.7rem);
   line-height: 1;
-  padding-top: 0.1em;
   white-space: nowrap;
-  color: transparent;
-  background-image: var(--gold-face);
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: var(--dark-rim);
 
   small {
     font-size: 0.6em;

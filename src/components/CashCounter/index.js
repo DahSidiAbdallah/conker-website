@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {GameNumber} from '../GameNumber'
+
 import './CashCounter.scss'
 
 const fmt = n => n.toLocaleString('en-US')
@@ -16,8 +18,8 @@ export const CashCounter = ({value, total, label}) => {
           <span className="cash-note">$</span>
         </span>
         <span className="hud-number">
-          {fmt(value)}
-          <span className="cash-total"> / {fmt(total)}</span>
+          <GameNumber text={fmt(value)} />
+          <span className="cash-total"> <GameNumber text={`/ ${fmt(total)}`} /></span>
         </span>
       </div>
     </div>

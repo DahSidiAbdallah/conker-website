@@ -46,8 +46,8 @@
   filter: var(--dark-rim);
 }
 
-// the QUIT / CONT... capsule: a thick near-black rim with a grey highlight, a see-through
-// middle, and green lettering. Colours sampled from the game's pause screen.
+// the QUIT / CONT... capsule: a flat, thick near-black rim with a grey highlight, a
+// see-through middle, and green lettering. Colours sampled from the game's textures.
 .pill {
   width: 100%;
   display: inline-flex;
@@ -56,29 +56,32 @@
   gap: 0.35em;
   padding: 0.45em clamp(0.4em, 2vw, 0.8em) 0.35em;
   border-radius: 999px;
-  border: clamp(3px, 0.8vw, 5px) solid #222317;
+  border: clamp(3px, 0.8vw, 5px) solid #1b2515;
   background: rgba(255, 250, 215, 0.28);
   box-shadow:
-    inset 0 2px 0 rgba(170, 163, 153, 0.9),
-    0 -1px 0 rgba(170, 163, 153, 0.7),
+    inset 0 2px 0 #92958f,
+    0 -1px 0 #cdcdcc,
     0 6px 10px rgba(0, 0, 0, 0.35);
   font-family: var(--font-logo);
   font-size: clamp(0.8rem, 3.3vw, 1.6rem);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   // unselected options are plain dark green, like QUIT
-  color: #1f4d07;
+  color: #2f4a24;
   transition: color 0.15s, background 0.15s, transform 0.2s cubic-bezier(0.2, 1.8, 0.4, 1);
   white-space: nowrap;
 }
 
-// the highlighted option glows lime with a dark outline, like CONT...
+// the highlighted option turns lime - lettering and an inner ring - like CONT...
 @mixin pill-selected {
-  color: #65c012;
-  background: rgba(35, 50, 20, 0.5);
+  color: #82f534;
   text-shadow:
-    -2px -2px 0 #17190e, 2px -2px 0 #17190e, -2px 2px 0 #17190e, 2px 2px 0 #17190e,
-    0 0 8px rgba(150, 197, 27, 0.6);
+    -1.5px -1.5px 0 #304726, 1.5px -1.5px 0 #304726, -1.5px 1.5px 0 #304726, 1.5px 1.5px 0 #304726;
+  box-shadow:
+    inset 0 0 0 3px #82f534,
+    inset 0 0 0 5px #c1e99c,
+    0 -1px 0 #cdcdcc,
+    0 6px 10px rgba(0, 0, 0, 0.35);
 }
 
 .pause-option:hover .pill,
