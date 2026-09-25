@@ -23,12 +23,14 @@
   box-shadow: 0 10px 0 #2a1001, 0 18px 18px rgba(0, 0, 0, 0.45);
 }
 
-// an eaten piece: only the tray is left
+// an eaten piece: only its mould in the tray is left
 .chocolate-piece {
   margin: 1px;
   border-radius: 4px;
-  background: rgba(40, 15, 0, 0.55);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+  background: #5a2608;
+  box-shadow:
+    inset 2px 2px 3px rgba(0, 0, 0, 0.55),
+    inset -1px -1px 0 rgba(255, 190, 130, 0.25);
 
   // milk chocolate with orange glints on the bevel, sampled from the pause screen
   &.whole,
