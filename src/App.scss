@@ -64,7 +64,8 @@
 }
 
 .app {
-  min-height: 100%;
+  // fill the screen even when the page is short, so the hive never runs out
+  min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
   padding: 1.5em 16px 2em;
