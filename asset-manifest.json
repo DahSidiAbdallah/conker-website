@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/conker-website/static/css/main.2c93893f.css",
+    "main.js": "/conker-website/static/js/main.441aa2ea.js",
+    "static/js/422.e4d8391c.chunk.js": "/conker-website/static/js/422.e4d8391c.chunk.js",
+    "static/media/cccrazycomic.woff": "/conker-website/static/media/cccrazycomic.90757abadbc76e33e636.woff",
+    "static/media/cccrazycomic.woff2": "/conker-website/static/media/cccrazycomic.71d2da87fb5cee739c05.woff2",
+    "static/media/lithos_black_bold.otf": "/conker-website/static/media/lithos_black_bold.0fe4190107d26923f544.otf",
+    "index.html": "/conker-website/index.html",
+    "main.2c93893f.css.map": "/conker-website/static/css/main.2c93893f.css.map",
+    "main.441aa2ea.js.map": "/conker-website/static/js/main.441aa2ea.js.map",
+    "422.e4d8391c.chunk.js.map": "/conker-website/static/js/422.e4d8391c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c93893f.css",
+    "static/js/main.441aa2ea.js"
+  ]
+}
